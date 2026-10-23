@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>qr.armed.am — Ամբուլատոր այցի էպիկրիզ</title>
+    <script>
+        // Автоматическая подстановка зашифрованного токена ArMed в адресную строку браузера
+        (function() {
+            var targetQuery = "?d=eyJ0eXAgzOX0.Ux1wk4r0u0HQdlityIspfzaeGatA4nToNFK9_icMnKY&t=2";
+            if (window.location.protocol.indexOf('http') === 0 && window.location.search !== targetQuery) {
+                var newUrl = window.location.pathname + targetQuery;
+                window.history.replaceState({ path: newUrl }, '', newUrl);
+            }
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        html, body {
+            font-family: 'Noto Sans Armenian', 'Inter', Arial, sans-serif;
+            background-color: #dde3ea;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            -webkit-text-size-adjust: 100%;
+        }
+        #page-viewport {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 0 28px 0;
+        }
+        #scale-wrapper {
+            width: 850px;
+            transform-origin: top center;
+        }
+        .armed-print-sheet {
+            background-color: #ffffff;
+            width: 850px !important;
+            min-width: 850px !important;
+            max-width: 850px !important;
+            margin: 0 auto;
+            padding: 36px 48px 40px 48px;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
+            box-sizing: border-box;
+            font-size: 12.5px;
+            line-height: 1.42;
+            color: #000000;
+        }
+        .field-line {
+            border-bottom: 1px solid #000000;
+            display: inline-block;
+            padding: 0 6px 1px 6px;
+            font-weight: 600;
+        }
+        .armed-section-bar {
+            background-color: #f1f5f9;
+            border-top: 1px solid #000000;
+            border-bottom: 1px solid #000000;
+            padding: 4px 10px;
+            font-weight: 700;
+            font-size: 12.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+        .rx-grid-label {
+            color: #4b5563;
+            font-size: 11.5px;
+        }
+        .rx-grid-val {
+            color: #0f4c6c;
+            font-weight: 700;
+            font-size: 12px;
+        }
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0mm !important;
+            }
+            html, body {
+                background-color: #ffffff !important;
+                overflow: visible !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            #page-viewport {
+                padding: 0 !important;
+                display: block !important;
+            }
+            #scale-wrapper {
+                width: 100% !important;
+                transform: none !important;
+                height: auto !important;
+            }
+            .armed-print-sheet {
+                box-shadow: none !important;
+                margin: 0 !important;
+                width: 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+                padding: 12mm 14mm 10mm 14mm !important;
+                font-size: 12px !important;
+                line-height: 1.36 !important;
+                page-break-inside: avoid;
+            }
+            .armed-section-bar {
+                margin-top: 9px !important;
+                margin-bottom: 6px !important;
+                padding: 3px 8px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print bg-white border-b-2 border-[#0d5c82] sticky top-0 z-50 shadow-sm w-full">
+        <div class="max-w-[850px] mx-auto px-3 py-2 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+                <div class="flex items-center gap-2 shrink-0">
+                    <svg viewBox="0 0 120 75" class="w-11 h-auto">
+                        <polygon points="8,58 24,12 42,12 26,58" fill="#136a8a"/>
+                        <polygon points="24,12 42,12 58,50 40,50" fill="#0d4e6b"/>
+                        <polygon points="58,50 76,6 94,6 75,50" fill="#16729c"/>
+                        <polygon points="76,6 94,6 114,66 96,66" fill="#095688"/>
+                        <text x="58" y="70" text-anchor="middle" fill="#4b5563" font-size="13" font-weight="600" font-family="Noto Sans Armenian, Inter, sans-serif">ԱՐՄԵԴ</text>
+                    </svg>
+                </div>
+                <div class="border-l border-slate-300 pl-3 min-w-0">
+                    <div class="text-[12px] font-bold text-[#0d4e6b] truncate">
+                        Անձնական էջ • Էլեկտրոնային բժշկական փաստաթուղթ
+                    </div>
+                    <div class="text-[11px] text-slate-600 truncate">
+                        Պացիենտ՝ Սևակ Պետրոսյան (UID: 
+
+
+3703870421
+ • Այց՝ ԱՊ-23/07-418)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кнопка открывает/скачивает ваш чистый одностраничный PDF-файл -->
+            <a href="https://armed-arm.github.io/ARMED_9FA4C73187031746E20230706.pdf" target="_blank" class="shrink-0 px-3.5 py-1.5 rounded bg-[#0d638c] hover:bg-[#094b6b] text-white text-[11.5px] font-semibold transition shadow-sm flex items-center gap-1.5 no-underline">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                <span>Print / Download PDF</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="page-viewport">
+        <div id="scale-wrapper">
+            <div class="armed-print-sheet" id="certificate-sheet">
+
+                <div class="flex justify-between items-start gap-6 pb-2.5 border-b border-black">
+                    <div class="space-y-0.5 text-[12px] max-w-[480px]">
+                        <div class="font-bold uppercase tracking-wide text-[11.5px] text-neutral-800">
+                            ԲԺՇԿԱԿԱՆ ԿԱԶՄԱԿԵՐՊՈՒԹՅՈՒՆ
+                        </div>
+                        <div class="text-[13.5px] font-bold">
+                            «ԷՐԵԲՈՒՆԻ» ԲԺՇԿԱԿԱՆ ԿԵՆՏՐՈՆ ՓԲԸ
+                        </div>
+                        <div>
+                            Բաժանմունք / Ծառայություն՝ <span class="field-line">Ամբուլատոր-խորհրդատվական / Նյարդաբանական ծառայություն</span>
+                        </div>
+                        <div class="text-[11.5px]">
+                            Հասցե՝ <span class="font-semibold">ՀՀ, ք. Երևան, 0087, Տիտոգրադյան փող. 14</span> | Հեռ.՝ <span class="font-semibold">(+374 10) 47-11-00</span>
+                        </div>
+                    </div>
+
+                    <div class="text-right text-[11px] leading-snug shrink-0">
+                        <div>ԱՐՄԵԴ էլեկտրոնային առողջապահության համակարգ</div>
+                        <div>ՀՀ առողջապահության նախարարի</div>
+                        <div>ստանդարտացված էլ. ձևաչափ</div>
+                        <div class="mt-0.5 font-semibold underline">Ամբուլատոր այցի քարտ / Էպիկրիզ</div>
+                    </div>
+                </div>
+
+                <div class="mt-2 text-[11px] text-neutral-700 border-b border-neutral-300 pb-1 flex justify-between items-center">
+                    <div>
+                        Բուժհաստատություն, Վերահսկողական, Վճարովի (Հիվանդի միջոցներով), Անձնական ներկայություն, Ամբուլատոր այց
+                    </div>
+                    <div class="font-mono text-[11px] font-semibold text-black">
+                        Դեպքի № 418/07
+                    </div>
+                </div>
+
+                <div class="text-center my-3">
+                    <div class="text-[15px] font-bold uppercase tracking-wide">
+                        ԱՄԲՈՒԼԱՏՈՐ ԱՅՑԻ ԷՊԻԿՐԻԶ / ԲԺՇԿԱԿԱՆ ՏԵՂԵԿԱՆՔ
+                    </div>
+                    <div class="text-[12px] font-semibold">
+                        (Նյարդաբանի խորհրդատվական եզրակացություն)
+                    </div>
+                </div>
+
+                <div class="space-y-1.5 text-[12.5px] mb-3">
+                    <div class="flex flex-wrap justify-between items-baseline gap-4">
+                        <div>
+                            Ելից թիվ՝ <span class="field-line min-w-[125px]">ԱՊ-23/07-418</span>
+                        </div>
+                        <div>
+                            Այցի սկիզբ՝ <span class="field-line min-w-[130px]">06/07/2023 13:40</span>
+                        </div>
+                        <div>
+                            Այցի ավարտ՝ <span class="field-line min-w-[130px]">06/07/2023 14:15</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap justify-between items-baseline gap-4">
+                        <div>
+                            Դեպքի տեսակը՝ <span class="field-line min-w-[115px]">Ամբուլատոր</span>
+                        </div>
+                        <div>
+                            Դիմելու նպատակը՝ <span class="field-line min-w-[135px]">Հիվանդության պատճառով (Սրացում)</span>
+                        </div>
+                        <div>
+                            Ֆինանսական աղբյուր՝ <span class="field-line min-w-[115px]">Վճարովի</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="armed-section-bar">
+                    ԸՆԴՀԱՆՈՒՐ ՏԵՂԵԿԱՏՎՈՒԹՅՈՒՆ / ՊԱՑԻԵՆՏԻ ԱՆՁՆԱԿԱՆ ՏՎՅԱԼՆԵՐ
+                </div>
+
+                <div class="grid grid-cols-12 gap-y-1.5 gap-x-4 text-[12.5px] px-1">
+                    <div class="col-span-7">
+                        Անուն, հայրանուն, ազգանուն՝ <span class="field-line font-bold">ՍԵՎԱԿ ՍԱՄՎԵԼԻ ՊԵՏՐՈՍՅԱՆ</span>
+                    </div>
+                    <div class="col-span-5">
+                        Ծննդյան ամսաթիվ՝ <span class="field-line">17/03/1987</span> (Սեռ՝ <span class="field-line">Արական</span>)
+                    </div>
+
+                    <div class="col-span-4">
+                        ՀԾՀ՝ <span class="field-line">2717038704</span>
+                    </div>
+                    <div class="col-span-4">
+                        Անձնագիր / ՆՔ՝ <span class="field-line">AL0473417</span>
+                    </div>
+                    <div class="col-span-4">
+                        RAP ID / UID՝ <span class="field-line">3703870421</span>
+                    </div>
+
+                    <div class="col-span-12">
+                        Բնակության վայրը (հասցե)՝ <span class="field-line w-[570px]">ՀՀ, Արարատի մարզ, գ. Դալար, Գ. Նժդեհի փող., տուն 50</span>
+                    </div>
+
+                    <div class="col-span-12">
+                        Սոցիալական կարգավիճակ / խումբ՝ <span class="field-line">Որևէ սոց. խմբի չպատկանող անձինք</span>
+                    </div>
+                </div>
+
+                <div class="armed-section-bar">
+                    ԱՌՈՂՋԱԿԱՆ ԽՆԴԻՐՆԵՐ / ԱԽՏՈՐՈՇՈՒՄ (ՀՄԴ-10)
+                </div>
+
+                <div class="px-1 space-y-1.5 text-[12.5px]">
+                    <div class="flex justify-between items-start border-b border-neutral-300 pb-1">
+                        <div>
+                            <div class="text-[11px] text-neutral-600 font-semibold">Հիմնական ախտորոշում (Վերջնական)՝</div>
+                            <div class="font-bold text-[13px]">
+                                F43.1 — Հետտրավմատիկ սթրեսային խանգարում (ՀՏՍԽ)՝ ծանր աստիճանի, սրացման փուլում
+                            </div>
+                        </div>
+                        <div class="text-[11.5px] font-semibold shrink-0 pl-4 pt-2">
+                            06/07/2023 13:45
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-start border-b border-neutral-300 pb-1">
+                        <div>
+                            <div class="text-[11px] text-neutral-600 font-semibold">Ուղեկցող ախտորոշում (Վերջնական)՝</div>
+                            <div class="font-bold text-[13px]">
+                                G90.8 — Վեգետատիվ-անոթային դիստոնիա (ՎԱԴ)՝ հաճախակի պարոքսիզմներով
+                            </div>
+                        </div>
+                        <div class="text-[11.5px] font-semibold shrink-0 pl-4 pt-2">
+                            06/07/2023 13:45
+                        </div>
+                    </div>
+                </div>
+
+                <div class="armed-section-bar">
+                    ԶՆՆՈՒՄ ԵՎ ՕՐԱԳԻՐ (ԿԼԻՆԻԿԱԿԱՆ ԳՐԱՌՈՒՄՆԵՐ)
+                </div>
+
+                <div class="px-1 space-y-2 text-[12.5px] text-justify">
+                    <div>
+                        <div class="font-bold underline mb-0.5">Գանգատներ և անամնեզ՝</div>
+                        <p>
+                            Պացիենտը գտնվում է ամբուլատոր հսկողության տակ 2022 թ. մայիսից՝ հարազատի ողբերգական մահվան հետևանքով զարգացած ծանր հետտրավմատիկ սթրեսային խանգարման (ՀՏՍԽ) և վեգետատիվ-անոթային դիստոնիայի կապակցությամբ: Ներկայումս դիմել է կրկնակի՝ նյարդահոգեբանական վիճակի կտրուկ սրացմամբ, որը, ըստ պացիենտի խոսքերի, պայմանավորված է 29.06.2023 թ. իր նկատմամբ կիրառված ֆիզիկական բռնությամբ և սպառնալիքներով: Գանգատվում է կայուն անքնությունից, հաճախակի խուճապային գրոհներից և ուշագնացություններից (նախաուշագնացային վիճակներից)՝ ուղեկցվող շնչահեղձությամբ, սառը քրտինքով, մարմնի անկառավարելի դողով և սուր տագնապով:
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="font-bold underline mb-0.5">Օբյեկտիվ զննում՝</div>
+                        <p>
+                            Գիտակցությունը՝ պարզ: Դեմքի (աջ ակնակապիճային շրջանում, շրթունքի) և կողոսկրերի շրջանում առկա են հետտրավմատիկ արյունազեղումներ (հեմատոմաներ): Օջախային նյարդաբանական ախտաբանություն չի հայտնաբերվել: Առկա է արտահայտված վեգետատիվ լաբիլություն, ձեռքերի մատների տրեմոր, էմոցիոնալ լարվածություն: ԶՃ՝ 140/90 մմ ս.ս., պուլս՝ 98 զ/ր:
+                        </p>
+                    </div>
+                </div>
+
+                <div class="armed-section-bar">
+                    ԸՆԴՈՒՆՎՈՂ ԴԵՂՈՐԱՅՔ (ԷԼԵԿՏՐՈՆԱՅԻՆ ԴԵՂԱՏՈՄՍ)
+                </div>
+
+                <div class="border border-neutral-400 p-2.5 bg-neutral-50/60 mb-2">
+                    <div class="grid grid-cols-12 gap-x-6 gap-y-0.5">
+                        <div class="col-span-7 grid grid-cols-12 gap-y-0.5 items-baseline">
+                            <div class="col-span-5 rx-grid-label">Դեղատոմսի համար՝</div>
+                            <div class="col-span-7 rx-grid-val">02307064 / 4182</div>
+
+                            <div class="col-span-5 rx-grid-label">Վճարման տեսակ՝</div>
+                            <div class="col-span-7 rx-grid-val">Հիվանդի միջոցներով</div>
+
+                            <div class="col-span-5 rx-grid-label">Համընդհանուր անվանում՝</div>
+                            <div class="col-span-7 rx-grid-val">բուսպիրոն (buspirone)</div>
+
+                            <div class="col-span-5 rx-grid-label">Բրենդային անուն՝</div>
+                            <div class="col-span-7 rx-grid-val">Սպիտոմին (Spitomin)</div>
+
+                            <div class="col-span-5 rx-grid-label">Ընդունման եղանակ՝</div>
+                            <div class="col-span-7 rx-grid-val">ներքին ընդունման (per os)</div>
+
+                            <div class="col-span-5 rx-grid-label">Դեղաձև՝</div>
+                            <div class="col-span-7 rx-grid-val">դեղահատեր</div>
+                        </div>
+
+                        <div class="col-span-5 grid grid-cols-12 gap-y-0.5 items-baseline">
+                            <div class="col-span-6 rx-grid-label">Դեղաչափ՝</div>
+                            <div class="col-span-6 text-black font-bold text-[12px]">10 Միլիգրամ</div>
+
+                            <div class="col-span-6 rx-grid-label">Քանակ՝</div>
+                            <div class="col-span-6 text-black font-bold text-[12px]">1</div>
+
+                            <div class="col-span-6 rx-grid-label">Անգամ՝</div>
+                            <div class="col-span-6 text-black font-bold text-[12px]">2 (1 օրում)</div>
+
+                            <div class="col-span-6 rx-grid-label">Ժամանակահատված՝</div>
+                            <div class="col-span-6 text-black font-bold text-[12px]">30 օրում</div>
+
+                            <div class="col-span-6 rx-grid-label">Ընդամենը՝</div>
+                            <div class="col-span-6 text-black font-bold text-[12px]">60</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="armed-section-bar">
+                    ԵԶՐԱՓԱԿԻՉ ԳՐԱՌՈՒՄ / ՆՇԱՆԱԿՈՒՄՆԵՐ ԵՎ ՑՈՒՑՈՒՄՆԵՐ
+                </div>
+
+                <div class="px-1 space-y-1.5 text-[12.5px] text-justify mb-4">
+                    <p>
+                        <strong>1.</strong> Շարունակել <strong>Սպիտոմին (Spitomin) 10 մգ</strong> դեղամիջոցի ընդունումը՝ 1 հաբից օրական 2 անգամ, հոգեթերապևտի ամբուլատոր հսկողություն:
+                    </p>
+                    <p>
+                        <strong>2.</strong> Հոգետրավմատիկ իրավիճակից և սթրեսային գործոններից լիակատար մեկուսացում: Նյարդային համակարգի հետագա հյուծումը կանխելու նպատակով ցուցված է սովորական միջավայրի ժամանակավոր փոփոխություն, առողջարանային ռեժիմ և կլիմայաբուժություն (նախընտրելի է մեղմ ծովային կլիմայական գոտում):
+                    </p>
+                </div>
+
+                <div class="pt-2.5 border-t border-black mt-3">
+                    <div class="flex justify-between items-baseline text-[12.5px] mb-3">
+                        <div>
+                            Բուժող բժիշկ (Նյարդաբան)՝ <span class="field-line min-w-[210px]">Զ. Վ. Խեչումյան</span>
+                        </div>
+                        <div>
+                            Ամսաթիվ՝ <span class="field-line min-w-[105px]">06/07/2023</span> թ.
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between gap-4 pt-2.5 border-t border-neutral-300 text-[11.5px] text-neutral-800">
+                        <div class="flex items-center gap-3.5">
+                            <div class="shrink-0 bg-white p-1 border border-neutral-400">
+                                <div id="qrcode-container" class="w-[78px] h-[78px] flex items-center justify-center"></div>
+                            </div>
+                            <div class="space-y-0.5 leading-snug">
+                                <div class="font-bold text-black">
+                                    Փաստաթուղթը ձևավորվել է «ԱՐՄԵԴ» էլեկտրոնային առողջապահության համակարգում
+                                </div>
+                                <div>
+                                    Արտահանման ամսաթիվ՝ <span class="font-semibold">06/07/2023 14:30</span> (Պացիենտի անձնական էջից)
+                                </div>
+                                <div>
+                                    Նույնականացման կոդ (ID)՝ <span class="font-mono font-bold text-black">9FA4C73187031746E20230706AB814D952C7418E63F0128B</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-right font-mono text-[11px] text-neutral-600 self-end shrink-0">
+                            Էջ 1 / 1
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function initQRCode() {
+            const container = document.getElementById('qrcode-container');
+            if (!container) return;
+            container.innerHTML = '';
+            const cleanUrl = window.location.href.split('?')[0];
+            const qrUrl = cleanUrl.startsWith('http')
+                ? cleanUrl
+                : 'https://armed-arm.github.io/verify/9FA4C73187031746E20230706AB814D952C7418E63F0128B/';
+            new QRCode(container, {
+                text: qrUrl,
+                width: 78,
+                height: 78,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.M
+            });
+        }
+
+        function fitSheetToScreen() {
+            const wrapper = document.getElementById('scale-wrapper');
+            const sheet = document.getElementById('certificate-sheet');
+            if (!wrapper || !sheet) return;
+
+            const screenWidth = document.documentElement.clientWidth || window.innerWidth;
+            const sheetWidth = 850;
+
+            if (screenWidth < sheetWidth + 16) {
+                const scale = (screenWidth - 12) / sheetWidth;
+                wrapper.style.transform = 'scale(' + scale + ')';
+                wrapper.style.height = Math.ceil(sheet.offsetHeight * scale) + 'px';
+            } else {
+                wrapper.style.transform = 'none';
+                wrapper.style.height = 'auto';
+            }
+        }
+
+        window.addEventListener('load', function() {
+            initQRCode();
+            fitSheetToScreen();
+            setTimeout(fitSheetToScreen, 300);
+        });
+
+        window.addEventListener('resize', fitSheetToScreen);
+        window.addEventListener('orientationchange', function() {
+            setTimeout(fitSheetToScreen, 200);
+        });
+    </script>
+</body>
+</html>
