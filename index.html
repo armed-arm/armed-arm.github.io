@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <!-- Запрет браузеру превращать UID и ՀԾՀ в кликабельные телефонные номера с оранжевой трубкой -->
+    <meta name="format-detection" content="telephone=no">
     <title>qr.armed.am — Ամբուլատոր այցի էպիկրիզ</title>
     <script>
         // Автоматическая подстановка зашифрованного токена ArMed в адресную строку браузера
@@ -125,10 +127,13 @@
 </head>
 <body>
 
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ С ПЕРЕХОДОМ НА ОФИЦИАЛЬНЫЙ САЙТ ARMED.AM -->
     <div class="no-print bg-white border-b-2 border-[#0d5c82] sticky top-0 z-50 shadow-sm w-full">
         <div class="max-w-[850px] mx-auto px-3 py-2 flex items-center justify-between gap-3">
-            <div class="flex items-center gap-3 min-w-0">
-                <div class="flex items-center gap-2 shrink-0">
+            
+            <!-- Кликабельный логотип и заголовок ArMed, ведущий на https://armed.am/am/auth/loginnew -->
+            <a href="https://armed.am/am/auth/loginnew" class="flex items-center gap-3 min-w-0 group no-underline cursor-pointer" title="Մուտք ԱՐՄԵԴ համակարգ">
+                <div class="flex items-center gap-2 shrink-0 transition-transform group-hover:scale-105">
                     <svg viewBox="0 0 120 75" class="w-11 h-auto">
                         <polygon points="8,58 24,12 42,12 26,58" fill="#136a8a"/>
                         <polygon points="24,12 42,12 58,50 40,50" fill="#0d4e6b"/>
@@ -138,24 +143,27 @@
                     </svg>
                 </div>
                 <div class="border-l border-slate-300 pl-3 min-w-0">
-                    <div class="text-[12px] font-bold text-[#0d4e6b] truncate">
+                    <div class="text-[12px] font-bold text-[#0d4e6b] group-hover:underline truncate">
                         Անձնական էջ • Էլեկտրոնային բժշկական փաստաթուղթ
                     </div>
                     <div class="text-[11px] text-slate-600 truncate">
-                        Պացիենտ՝ Սևակ Պետրոսյան (UID: 
-
-
-3703870421
- • Այց՝ ԱՊ-23/07-418)
+                        Պացիենտ՝ Սևակ Պետրոսյան (UID: 3703870421 • Այց՝ ԱՊ-23/07-418)
                     </div>
                 </div>
-            </div>
-
-            <!-- Кнопка открывает/скачивает ваш чистый одностраничный PDF-файл -->
-            <a href="https://armed-arm.github.io/ARMED_9FA4C73187031746E20230706.pdf" target="_blank" class="shrink-0 px-3.5 py-1.5 rounded bg-[#0d638c] hover:bg-[#094b6b] text-white text-[11.5px] font-semibold transition shadow-sm flex items-center gap-1.5 no-underline">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-                <span>Print / Download PDF</span>
             </a>
+
+            <!-- Блок кнопок справа: переход в Личный кабинет ArMed + скачивание PDF -->
+            <div class="flex items-center gap-2 shrink-0">
+                <a href="https://armed.am/am/auth/loginnew" class="px-2.5 py-1.5 rounded border border-[#0d638c] text-[#0d638c] hover:bg-slate-50 text-[11px] font-semibold transition flex items-center gap-1 no-underline">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                    <span class="hidden sm:inline">ԱՐՄԵԴ Մուտք</span>
+                </a>
+
+                <a href="https://armed-arm.github.io/ARMED_9FA4C73187031746E20230706.pdf" target="_blank" class="px-3 py-1.5 rounded bg-[#0d638c] hover:bg-[#094b6b] text-white text-[11.5px] font-semibold transition shadow-sm flex items-center gap-1.5 no-underline">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                    <span>Print / Download PDF</span>
+                </a>
+            </div>
         </div>
     </div>
 
